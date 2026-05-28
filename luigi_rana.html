@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luigi Rana — Produttore · Arrangiatore · Compositore</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#080706;
+  --dark:#111009;
+  --warm:#1c1914;
+  --gold:#c4883a;
+  --gold2:#e8b86d;
+  --cream:#f0ebe0;
+  --muted:rgba(240,235,224,.55);
+  --faint:rgba(240,235,224,.15);
+  --line:rgba(196,136,58,.25);
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* ─ TYPE ─────────────────────────────────────────────── */
+.display{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;line-height:.95}
+.serif{font-family:'Cormorant Garamond',serif}
+.tag{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.tag-white{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(240,235,224,.4)}
+
+/* ─ LAYOUT ───────────────────────────────────────────── */
+.container{max-width:1140px;margin:0 auto;padding:0 2rem}
+.section{padding:7rem 0}
+.section-sm{padding:4rem 0}
+hr.rule{border:none;border-top:1px solid var(--line);margin:0}
+
+/* ─ HERO ─────────────────────────────────────────────── */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.hero-photo{position:relative;overflow:hidden;background:#0d0b09}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:brightness(.82) contrast(1.08);transition:transform 12s ease}
+.hero-photo:hover img{transform:scale(1.03)}
+.hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 55%,var(--ink)),linear-gradient(to top,var(--ink) 0%,rgba(8,7,6,.85) 25%,transparent 50%)}
+.hero-copy{display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 4rem 5rem 3rem;position:relative;background:var(--ink)}
+.hero-copy::before{content:none}
+.hero-number{font-family:'Bebas Neue',sans-serif;font-size:clamp(7rem,11vw,10rem);line-height:.88;letter-spacing:.02em;margin-bottom:.8rem}
+.hero-number .gold{color:var(--gold)}
+.hero-alter{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.hero-alter span{color:var(--cream);opacity:.5;margin:0 .5rem}
+.hero-role{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--muted);line-height:1.5;margin-bottom:3rem}
+.hero-stats{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid var(--line)}
+.hstat-n{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--gold);line-height:1;display:block}
+.hstat-l{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,235,224,.65);margin-top:.2rem}
+.hero-scroll{position:absolute;bottom:2.5rem;right:2.5rem;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(240,235,224,.5);writing-mode:vertical-rl;display:flex;align-items:center;gap:.6rem}
+.hero-scroll::before{content:'';width:1px;height:3rem;background:rgba(240,235,224,.15)}
+
+/* ─ VIRAL BLOCK ──────────────────────────────────────── */
+#viral{background:var(--gold);color:var(--ink);text-align:center;padding:5rem 2rem;overflow:hidden;position:relative}
+#viral::before{content:'3.300.000.000';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:20vw;opacity:.06;white-space:nowrap;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.viral-label{font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;opacity:.65;margin-bottom:.8rem}
+.viral-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,10vw,8.5rem);line-height:.95;display:block}
+.viral-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,3vw,2rem);font-style:italic;margin-top:.3rem}
+.viral-sub{font-size:.82rem;opacity:.7;margin-top:.6rem;letter-spacing:.05em}
+.viral-remix{display:inline-block;font-size:clamp(1rem,2.5vw,1.6rem);font-style:italic;font-family:'Cormorant Garamond',serif;margin-top:.5rem;opacity:.85}
+.viral-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.pill{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(8,7,6,.3);padding:.4rem 1rem;opacity:.75}
+
+/* ─ SANREMO ──────────────────────────────────────────── */
+#sanremo{background:var(--dark);padding:7rem 0}
+.sanremo-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:3rem}
+.sanremo-box{background:var(--warm);padding:3rem;position:relative;overflow:hidden}
+.sanremo-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)}
+.sanremo-yr{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:var(--gold);line-height:.9;margin-bottom:.5rem}
+.sanremo-song{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;margin-bottom:1.2rem;color:var(--cream)}
+.sanremo-details{font-size:.8rem;color:var(--muted);line-height:1.8}
+.sanremo-details li{list-style:none;padding:.2rem 0;border-bottom:1px solid rgba(240,235,224,.06)}
+.sanremo-details li::before{content:'— ';color:var(--gold)}
+.sanremo-badge{position:absolute;top:2rem;right:2rem;width:3rem;height:3rem;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+
+/* ─ PHOTO BREAK ──────────────────────────────────────── */
+.photo-break{height:420px;background:var(--warm);position:relative;overflow:hidden;display:flex;align-items:flex-end}
+.photo-break img{width:100%;height:100%;object-fit:cover;opacity:.6;position:absolute;inset:0}
+.photo-break-text{position:relative;z-index:1;padding:3rem;width:100%}
+.photo-break-text h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);line-height:.95;color:var(--cream)}
+.photo-break-text p{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:1rem;margin-top:.5rem}
+.photo-placeholder{width:100%;height:100%;background:var(--warm);display:flex;align-items:center;justify-content:center;position:absolute;inset:0}
+.photo-placeholder span{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(240,235,224,.2)}
+
+/* ─ HITS ─────────────────────────────────────────────── */
+#hits{background:var(--ink);padding:7rem 0}
+.hits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.hit{background:var(--warm);padding:1.8rem;position:relative;border-left:2px solid var(--gold);transition:background .2s}
+.hit:hover{background:#231e18}
+.hit-n{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--line);line-height:1;position:absolute;top:.8rem;right:1rem}
+.hit-artist{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.hit-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:var(--cream);margin-bottom:.8rem}
+.hit-info{font-size:.75rem;color:var(--muted);line-height:1.7}
+.hit-info strong{color:var(--cream);font-weight:500}
+.hit-award{display:inline-block;margin-top:.8rem;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .7rem;background:rgba(196,136,58,.12);border:1px solid rgba(196,136,58,.25);color:var(--gold2)}
+
+/* ─ LA SECTION ───────────────────────────────────────── */
+#la{background:var(--dark);padding:7rem 0}
+.la-split{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.la-musicians{display:flex;flex-direction:column;gap:.8rem;margin-top:2rem}
+.musician{display:grid;grid-template-columns:2rem 1fr;gap:1rem;align-items:baseline;padding:.7rem 0;border-bottom:1px solid var(--faint)}
+.musician-n{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--line)}
+.musician-name{font-weight:500;font-size:.9rem;color:var(--cream)}
+.musician-role{font-size:.75rem;color:var(--muted)}
+
+/* ─ PARTNERS ─────────────────────────────────────────── */
+#partners{background:var(--ink);padding:7rem 0}
+.partner-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.partner-card{background:var(--warm);padding:2rem;border-top:2px solid var(--gold)}
+.partner-icon{font-size:1.8rem;margin-bottom:.8rem;display:block}
+.partner-name{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.06em;margin-bottom:.6rem}
+.partner-body{font-size:.8rem;color:var(--muted);line-height:1.75}
+.partner-body strong{color:var(--cream);font-weight:500}
+.partner-tag{display:inline-block;margin-top:.8rem;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:1px}
+
+/* ─ STUDIOS ──────────────────────────────────────────── */
+#studios{background:var(--dark);padding:7rem 0}
+.studios-list{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--faint);margin-top:3rem}
+.studio{background:var(--dark);padding:2rem 1.5rem;text-align:center;transition:background .2s;cursor:default}
+.studio:hover{background:var(--warm)}
+.studio-name{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.06em;color:var(--cream);line-height:1.2}
+.studio-city{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:.4rem}
+.studio-note{font-size:.68rem;color:rgba(240,235,224,.3);margin-top:.3rem}
+
+/* ─ SELMAH ───────────────────────────────────────────── */
+#selmah{background:linear-gradient(160deg,#180d04 0%,#211208 50%,#180d04 100%);padding:7rem 0;position:relative;overflow:hidden}
+#selmah::before{content:'SELMAH';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:25vw;opacity:.04;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap}
+.selmah-header{display:flex;align-items:flex-end;gap:3rem;border-bottom:1px solid var(--line);padding-bottom:2.5rem;margin-bottom:3rem}
+.selmah-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,7vw,6rem);line-height:.9;color:var(--gold)}
+.selmah-big small{display:block;font-family:'Cormorant Garamond',serif;font-size:.3em;font-style:italic;font-weight:300;color:var(--gold2);letter-spacing:.05em}
+.selmah-sub{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--muted);max-width:260px;line-height:1.5}
+.selmah-cols{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.selmah-col-title{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
+.selmah-list{list-style:none}
+.selmah-list li{font-size:.84rem;color:var(--muted);padding:.5rem 0;border-bottom:1px solid var(--faint);display:flex;gap:.8rem}
+.selmah-list li::before{content:'→';color:var(--gold);flex-shrink:0;font-size:.75rem;margin-top:.1rem}
+.selmah-list li strong{color:var(--cream);font-weight:500}
+.selmah-progetti{background:rgba(196,136,58,.06);border:1px solid var(--line);padding:2.5rem;margin-top:3rem;position:relative}
+.selmah-progetti::before{content:'PROGETTI IN CORSO';position:absolute;top:-1px;left:2rem;background:var(--gold);color:var(--ink);font-family:'Bebas Neue',sans-serif;font-size:.72rem;letter-spacing:.15em;padding:.2rem .8rem}
+.selmah-proj-cols{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:1rem}
+.proj-title{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold2);margin-bottom:.8rem}
+.proj-body{font-size:.82rem;color:var(--muted);line-height:1.85}
+.proj-body strong{color:var(--cream);font-weight:500}
+
+/* ─ LABELS ───────────────────────────────────────────── */
+#labels{background:var(--ink);padding:7rem 0}
+.labels-intro{max-width:560px;margin-bottom:3rem}
+.labels-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--faint)}
+.lbl{background:var(--dark);padding:1.6rem 1.2rem;text-align:center;transition:background .2s}
+.lbl:hover{background:var(--warm)}
+.lbl-name{font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.08em;color:var(--cream);line-height:1.2}
+.lbl-note{font-size:.65rem;color:rgba(240,235,224,.3);margin-top:.3rem;letter-spacing:.05em}
+
+/* ─ INIZI ────────────────────────────────────────────── */
+#inizi{background:var(--dark);padding:7rem 0}
+.inizi-split{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.inizi-text{font-size:.9rem;color:var(--muted);line-height:1.9}
+.inizi-text p+p{margin-top:1.1em}
+.inizi-text strong{color:var(--cream);font-weight:500}
+.inizi-photo{background:var(--warm);height:480px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.inizi-photo .photo-placeholder span{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(240,235,224,.2)}
+
+/* ─ BIO ──────────────────────────────────────────────── */
+#bio{background:var(--ink);padding:7rem 0}
+.bio-inner{max-width:760px}
+.bio-text{font-size:.92rem;color:var(--muted);line-height:1.95}
+.bio-text p+p{margin-top:1.2em}
+.bio-text strong{color:var(--cream);font-weight:500}
+
+/* ─ DISCO ────────────────────────────────────────────── */
+#disco{background:var(--dark);padding:7rem 0}
+.disco-era{margin-bottom:3.5rem}
+.era-label{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--gold);letter-spacing:.06em;border-bottom:1px solid var(--line);padding-bottom:.4rem;margin-bottom:1rem}
+.disco-row{list-style:none}
+.disco-row li{display:grid;grid-template-columns:48px 1fr;gap:1rem;font-size:.8rem;color:var(--muted);padding:.45rem 0;border-bottom:1px solid var(--faint);align-items:baseline}
+.disco-row .yr{color:var(--gold);font-weight:500;font-size:.76rem}
+
+/* ─ CONTATTI ─────────────────────────────────────────── */
+#contatti{background:var(--ink);padding:5rem 0;text-align:center}
+.contact-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem;margin-top:2.5rem}
+.cbtn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.8rem;border:1px solid rgba(240,235,224,.15);color:var(--cream);text-decoration:none;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;transition:all .25s}
+.cbtn:hover{border-color:var(--gold);color:var(--gold);background:rgba(196,136,58,.05)}
+
+/* ─ FOOTER ──────────────────────────────────────────────*/
+footer{background:#050403;padding:3rem 2rem;text-align:center;font-size:.68rem;letter-spacing:.12em;color:rgba(240,235,224,.25);border-top:1px solid var(--faint)}
+footer strong{color:rgba(240,235,224,.6);font-weight:400}
+
+/* ─ PREMI STRIP ─────────────────────────────────────────*/
+.premi-strip{background:var(--warm);padding:4rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.premi-inner{display:flex;flex-wrap:wrap;justify-content:center;gap:0}
+.premio{padding:2rem 2.5rem;text-align:center;border-right:1px solid var(--line)}
+.premio:last-child{border-right:none}
+.premio-ico{font-size:1.6rem;display:block;margin-bottom:.5rem}
+.premio-n{font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.06em;color:var(--gold)}
+.premio-d{font-size:.68rem;color:var(--muted);margin-top:.2rem;max-width:130px;margin-left:auto;margin-right:auto;line-height:1.4}
+
+/* ─ RESPONSIVE ──────────────────────────────────────────*/
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr;min-height:auto}
+  .hero-photo{height:65vw;min-height:320px}
+  .hero-photo::after{background:linear-gradient(to bottom,rgba(8,7,6,.1) 0%,rgba(8,7,6,.5) 65%,var(--ink) 100%)}
+  .hero-copy{padding:3rem 1.5rem 4rem}
+  .sanremo-grid,.la-split,.selmah-cols,.selmah-proj-cols,.inizi-split,.hits-grid,.partner-grid{grid-template-columns:1fr}
+  .studios-list{grid-template-columns:repeat(2,1fr)}
+  .labels-grid{grid-template-columns:repeat(2,1fr)}
+  .photo-break{height:280px}
+  .hero-stats{gap:1.5rem}
+}
+@media(max-width:600px){
+  .hits-grid{grid-template-columns:1fr}
+  .studios-list{grid-template-columns:repeat(2,1fr)}
+  .premio{padding:1.5rem 1.2rem;border-right:none;border-bottom:1px solid var(--line);width:50%}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ HERO ══════════════════════════ -->
+<section id="hero">
+  <div class="hero-photo">
+    <img src="image-001.jpg" alt="Luigi Rana">
+  </div>
+  <div class="hero-copy">
+    <div class="hero-number" style="color:var(--cream)">LUIGI<br><span class="gold" style="color:var(--gold)">RANA</span></div>
+    <p class="hero-alter" style="display:flex;align-items:center;gap:.8rem;flex-wrap:wrap">
+      <span style="font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(240,235,224,.75)">also known as</span>
+      <span style="display:inline-flex;align-items:center;gap:.5rem">
+        <span style="width:1px;height:1rem;background:rgba(196,136,58,.4)"></span>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.2em;color:var(--cream);opacity:1">MR. FROG</span>
+        <span style="width:1px;height:1rem;background:rgba(196,136,58,.4)"></span>
+      </span>
+      <span style="font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(240,235,224,.75)">Dance &amp; Electronic</span>
+    </p>
+    <p class="hero-role" style="color:rgba(240,235,224,.8)">Produttore · Arrangiatore<br>Chitarrista · Compositore</p>
+    <div class="hero-stats">
+      <div><span class="hstat-n">3.3B</span><div class="hstat-l">Streaming globali</div></div>
+      <div><span class="hstat-n">2×</span><div class="hstat-l">Festival Sanremo</div></div>
+      <div><span class="hstat-n">30+</span><div class="hstat-l">Anni di carriera</div></div>
+      <div><span class="hstat-n">15+</span><div class="hstat-l">Paesi nel mondo</div></div>
+    </div>
+    <div class="hero-scroll">scroll</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ VIRAL BLOCK ══════════════════════ -->
+<section id="viral">
+  <p class="viral-label">Recente successo globale</p>
+  <span class="viral-num">3.300.000.000</span>
+  <p class="viral-title">"Batte Forte" — Lollipop · Sanremo 2002</p>
+  <p class="viral-remix">Asian Remix Version</p>
+  <p class="viral-sub">Virale su TikTok · In vetta alle classifiche asiatiche · 2024–2025</p>
+  <div class="viral-pills">
+    <span class="pill">Spotify</span><span class="pill">TikTok</span>
+    <span class="pill">YouTube</span><span class="pill">Apple Music</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SANREMO ══════════════════════════ -->
+<section id="sanremo">
+  <div class="container">
+    <h2 class="display" style="font-size:clamp(2.5rem,5vw,4rem);margin-bottom:.5rem">Festival di Sanremo</h2>
+    <p class="tag" style="margin-bottom:3rem">Due volte <span class="serif" style="font-style:italic;color:var(--gold)">sul palco</span></p>
+    <div class="sanremo-grid">
+      <div class="sanremo-box" style="display:flex;flex-direction:column">
+        <div class="sanremo-badge">🏆</div>
+        <div class="sanremo-yr">2002</div>
+        <div class="sanremo-song">"Batte Forte" — Lollipop</div>
+        <ul class="sanremo-details">
+          <li>Autore, arrangiatore e produttore — Warner Music</li>
+          <li>Co-autori: V. Giorgilli e T. Blescia · Team: L. Rana e V. Giorgilli</li>
+          <li>Premio Telefonino d'Oro — canzone più scaricata</li>
+          <li>Colonna sonora "Il Libro della Giungla 2" — Walt Disney</li>
+          <li>3,3 miliardi di streaming — virale su TikTok Asia</li>
+        </ul>
+        <div style="margin-top:auto;padding-top:1.5rem;position:relative">
+          <img src="image-002.jpg" alt="Sanremo 2002" style="width:100%;display:block">
+          <div style="position:absolute;top:0;left:0;right:0;height:40%;background:linear-gradient(to bottom,var(--warm),transparent)"></div>
+        </div>
+      </div>
+      <div class="sanremo-box" style="display:flex;flex-direction:column">
+        <div class="sanremo-badge">🥇</div>
+        <div class="sanremo-yr">2004</div>
+        <div class="sanremo-song">"Sei la vita mia" — Mario Rosini</div>
+        <ul class="sanremo-details">
+          <li>2° posto — Categoria Big</li>
+          <li>Premio Volare — Luigi Rana — miglior arrangiatore</li>
+          <li>Premio Mia Martini</li>
+          <li>Palma d'Oro</li>
+        </ul>
+        <div style="margin-top:auto;padding-top:1.5rem;position:relative">
+          <img src="image-003.jpg" alt="Sanremo 2004" style="width:100%;display:block">
+          <div style="position:absolute;top:0;left:0;right:0;height:40%;background:linear-gradient(to bottom,var(--warm),transparent)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══════════════════════════ HIT NAZIONALI ══════════════════════ -->
+<section id="hits">
+  <div class="container">
+    <p class="tag">Successi discografici</p>
+    <h2 class="display" style="font-size:clamp(2.5rem,5vw,4rem);margin-top:.5rem;margin-bottom:.5rem">Hit <span class="serif" style="font-style:italic;color:var(--gold)">nazionali e internazionali</span></h2>
+    <p class="serif" style="font-style:italic;color:var(--muted);font-size:1rem;margin-bottom:3rem">Una selezione dei successi più significativi</p>
+    <div style="margin-bottom:0">
+      <img src="image-004.jpg" alt="Luigi Rana in studio" style="width:100%;display:block">
+    </div>
+    <div class="hits-grid" style="margin-top:0">
+
+      <div class="hit"><span class="hit-n">01</span>
+        <p class="hit-artist">Lollipop</p>
+        <p class="hit-title">"Batte Forte"</p>
+        <p class="hit-info"><strong>Sanremo 2002</strong> · WEA / Warner<br>Autore, arrangiatore e produttore<br>Co-autori: V. Giorgilli, T. Blescia</p>
+        <span class="hit-award">3,3 miliardi di streaming</span>
+      </div>
+
+      <div class="hit"><span class="hit-n">02</span>
+        <p class="hit-artist">Lollipop</p>
+        <p class="hit-title">"Credi a Me"</p>
+        <p class="hit-info"><strong>Walt Disney Records · 2003</strong><br>Produzione e co-scrittura<br>Colonna sonora "Il Libro della Giungla 2"</p>
+        <span class="hit-award">Disney Channel · Worldwide</span>
+      </div>
+
+      <div class="hit"><span class="hit-n">03</span>
+        <p class="hit-artist">Lollipop</p>
+        <p class="hit-title">"Together"</p>
+        <p class="hit-info"><strong>Warner Music Italy · 2004</strong><br>Produzione e co-scrittura<br>Colonna sonora "Amici per sempre"</p>
+        <span class="hit-award">Top 20 FIMI — pos. 19</span>
+      </div>
+
+      <div class="hit"><span class="hit-n">04</span>
+        <p class="hit-artist">Mario Rosini</p>
+        <p class="hit-title">"Sei la vita mia"</p>
+        <p class="hit-info"><strong>Sanremo 2004</strong> · Cafè Concerto / Sony<br>Co-autore e produttore<br>Dir. orchestra: M° Beppe Vessicchio</p>
+        <span class="hit-award">Premio Volare · Mia Martini · Palma d'Oro</span>
+      </div>
+
+      <div class="hit"><span class="hit-n">05</span>
+        <p class="hit-artist">Lucky Star · Emma Marrone</p>
+        <p class="hit-title">"Stile"</p>
+        <p class="hit-info"><strong>Universal Music · 2003</strong><br>Autore e produttore<br>Primo brano in assoluto di Emma Marrone</p>
+        <span class="hit-award">Sigla W.I.T.C.H. — Disney/Jetix</span>
+      </div>
+
+      <div class="hit"><span class="hit-n">06</span>
+        <p class="hit-artist">Saranno Famosi (Fame) · Amici 2003</p>
+        <p class="hit-title">Prima edizione Amici di Maria De Filippi</p>
+        <p class="hit-info">
+          <strong>Saranno Famosi (2002)</strong> — Sugar Music / Universal Music Italia<br>Team: Luigi Rana, Vanni Giorgilli ed altri<br><br>
+          <strong>Amici — I Ragazzi del 2003</strong> — Sugar Music / Universal Music Italia<br>Team: Luigi Rana, Vanni Giorgilli ed altri
+        </p>
+        <span class="hit-award">Disco di Platino in Italia</span>
+      </div>
+
+      <div class="hit"><span class="hit-n">07</span>
+        <p class="hit-artist">Marta Sánchez</p>
+        <p class="hit-title">"Tal Vez" · "La Noche Que Acabó"</p>
+        <p class="hit-info"><strong>Muxxic / Universal Spain · 2002–07</strong><br>Scrittura e produzione con C. de Walden<br>Album "Soy Yo" · Album "Miss Sánchez"</p>
+        <span class="hit-award">Multiplatino · Premio Ondas 2002</span>
+      </div>
+
+      <div class="hit"><span class="hit-n">08</span>
+        <p class="hit-artist">Sarah Geronimo</p>
+        <p class="hit-title">"I Still Believe in Love"</p>
+        <p class="hit-info"><strong>Viva Records · Filippine · 2006</strong><br>Team: Luigi Rana e Christian de Walden<br>Album "Becoming"</p>
+        <span class="hit-award">Disco di Platino — Filippine</span>
+      </div>
+
+      <div class="hit"><span class="hit-n">09</span>
+        <p class="hit-artist">Rachelle Ann Go</p>
+        <p class="hit-title">"Alam Ng Ating Mga Puso"</p>
+        <p class="hit-info"><strong>Viva Records · Filippine · 2007</strong><br>Arrangiamenti e tastiere<br>Album "Obsession"</p>
+        <span class="hit-award">Disco d'Oro · Myx Music Award 2008</span>
+      </div>
+
+      <div class="hit"><span class="hit-n">10</span>
+        <p class="hit-artist">Trini Lopez con Tony Renis</p>
+        <p class="hit-title">"Canción Azul"</p>
+        <p class="hit-info"><strong>PanaRecord / Sony · Los Angeles · 2001</strong><br>Arrangiamento fiati con Demo Morselli<br>Con la collaborazione di Tony Renis</p>
+        <span class="hit-award">Radio europea e latina · Promo Vinile 12"</span>
+      </div>
+
+      <div class="hit"><span class="hit-n">11</span>
+        <p class="hit-artist">Corona</p>
+        <p class="hit-title">"Good Love"</p>
+        <p class="hit-info"><strong>PanaRecord / T.R. Entertainment · 2000</strong><br>Arrangiamento e mix con Vanni Giorgilli<br>Progressive House / Euro-Trance</p>
+        <span class="hit-award">Cult nel circuito DJ europeo</span>
+      </div>
+
+      <div class="hit"><span class="hit-n">12</span>
+        <p class="hit-artist">Selma Hernandes</p>
+        <p class="hit-title">"Musica pra Dançar" · "Num Segundo"</p>
+        <p class="hit-info"><strong>Just Ent. / Universo S.p.A. · 2009–10</strong><br>Produzione con Vanni Giorgilli<br>"Num Segundo" — OST Doc. RAI TRADE Bossa Nova</p>
+        <span class="hit-award">Sigla Veline · Striscia la Notizia · Canale 5</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ PHOTO BREAK ══════════════════════ -->
+<div style="position:relative;height:420px;background:var(--warm);overflow:hidden">
+  <!-- foto a destra con sfumatura -->
+  <div style="position:absolute;top:0;right:0;bottom:0;width:45%">
+    <img src="image-005.jpeg" alt="Luigi Rana in studio" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1">
+    <div style="position:absolute;inset:0;background:linear-gradient(to right,var(--warm) 0%,transparent 50%)"></div>
+  </div>
+  <!-- testo a sinistra -->
+  <div class="container" style="position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:3rem">
+    <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);line-height:.95;color:var(--cream)">Collaborazioni</h3>
+    <p class="serif" style="font-style:italic;color:var(--muted);font-size:1rem;margin-top:.5rem">Los Angeles · Asia · Europa · Brasile</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════ LOS ANGELES ══════════════════════ -->
+<section id="la">
+  <div class="container">
+    <div class="la-split">
+      <div>
+        <h2 class="display" style="font-size:clamp(2.5rem,5vw,4.5rem);line-height:.9">Los<br><span class="serif" style="font-style:italic;color:var(--gold)">Angeles</span></h2>
+        <p style="font-size:.88rem;color:var(--muted);line-height:1.8;margin-top:1.5rem;max-width:380px">Ha lavorato a Los Angeles con i musicisti più ricercati dell'industria discografica americana, portando nelle sue produzioni un livello tecnico e artistico di standard internazionale.</p>
+        <div class="la-musicians">
+          <div class="musician"><span class="musician-n">01</span><div><div class="musician-name">Vinnie Colaiuta</div><div class="musician-role">Batterista di Sting, Frank Zappa, Jeff Beck</div></div></div>
+          <div class="musician"><span class="musician-n">02</span><div><div class="musician-name">Abraham Laboriel</div><div class="musician-role">Bassista di Herbie Hancock, George Harrison</div></div></div>
+          <div class="musician"><span class="musician-n">03</span><div><div class="musician-name">Randy Waldman</div><div class="musician-role">Pianista di Barbra Streisand, Frank Sinatra</div></div></div>
+          <div class="musician"><span class="musician-n">04</span><div><div class="musician-name">Tim Pierce</div><div class="musician-role">Chitarrista di Bruce Springsteen, Don Henley</div></div></div>
+          <div class="musician"><span class="musician-n">05</span><div><div class="musician-name">James Harrah</div><div class="musician-role">Chitarrista di Diana Krall, Elvis Costello</div></div></div>
+        </div>
+      </div>
+      <div>
+        <p class="tag" style="margin-bottom:1.5rem">Cinema · TV · Pubblicità</p>
+        <div style="display:flex;flex-direction:column;gap:1.2rem">
+          <div style="background:var(--warm);padding:1.5rem;border-left:2px solid var(--gold)">
+            <p style="font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Walt Disney</p>
+            <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem">
+              <div style="flex:1">
+                <p style="font-size:.88rem;color:var(--cream);font-weight:500">Il Libro della Giungla 2 (2003)</p>
+                <p style="font-size:.78rem;color:var(--muted);margin-top:.3rem">Credi a Me — Lollipop · Walt Disney Records<br>Proficua collaborazione con Roberto Morville — Buena Vista</p>
+              </div>
+              <img src="image-006.png" alt="Il Libro della Giungla 2" style="width:120px;flex-shrink:0;display:block">
+            </div>
+            <div style="display:flex;align-items:center;gap:1.2rem;border-top:1px solid var(--line);padding-top:1.2rem">
+              <div style="flex:1">
+                <p style="font-size:.88rem;color:var(--cream);font-weight:500">Serie W.I.T.C.H. (Disney/Jetix)</p>
+                <p style="font-size:.78rem;color:var(--muted);margin-top:.3rem">W.I.T.C.H. Lucky Star con Emma Marrone</p>
+              </div>
+              <img src="image-007.png" alt="W.I.T.C.H." style="width:140px;flex-shrink:0;display:block">
+            </div>
+          </div>
+          <div style="background:var(--warm);padding:1.5rem;border-left:2px solid var(--gold)">
+            <p style="font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Mediaset · RAI</p>
+            <p style="font-size:.78rem;color:var(--muted);margin-top:.3rem">Doc. RAI TRADE — 50 anni della Bossa Nova - "Num segundo" - Selma Hernandes</p>
+            <p style="font-size:.78rem;color:var(--muted);margin-top:.3rem">Striscia la notizia: Stacchetto delle veline - "Musica pra dançar" - Selma Hernandes</p>
+          </div>
+          <div style="background:var(--warm);padding:1.5rem;border-left:2px solid var(--gold);display:flex;align-items:center;gap:1.2rem">
+            <div style="flex:1">
+              <p style="font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Spot & Sport</p>
+              <p style="font-size:.88rem;color:var(--cream);font-weight:500">Fiat · Conad · Saicaf · AS Bari</p>
+              <p style="font-size:.78rem;color:var(--muted);margin-top:.3rem">Spot pubblicitari nazionali · Inno ufficiale AS Bari — Promozione in Serie A (2008)</p>
+            </div>
+            <img src="image-008.JPG" alt="AS Bari" style="width:180px;flex-shrink:0;display:block">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ PREMI STRIP ══════════════════════════ -->
+<div class="premi-strip">
+  <div class="premi-inner container" style="max-width:1140px">
+    <div class="premio"><span class="premio-ico">🏆</span><div class="premio-n">Premio Volare</div><div class="premio-d">Miglior Arrangiatore — Sanremo 2004</div></div>
+    <div class="premio"><span class="premio-ico">🏆</span><div class="premio-n">Premio Mia Martini</div><div class="premio-d">Sanremo 2004</div></div>
+    <div class="premio"><span class="premio-ico">🏆</span><div class="premio-n">Palma d'Oro</div><div class="premio-d">Sanremo 2004</div></div>
+    <div class="premio"><span class="premio-ico">🥇</span><div class="premio-n">Telefonino d'Oro</div><div class="premio-d">Canzone più scaricata — Sanremo 2002</div></div>
+    <div class="premio"><span class="premio-ico">💿</span><div class="premio-n">Disco di Platino</div><div class="premio-d">Sarah Geronimo "Becoming" — Filippine 2006</div></div>
+    <div class="premio"><span class="premio-ico">💿</span><div class="premio-n">Multiplatino</div><div class="premio-d">Marta Sánchez — Spagna</div></div>
+    <div class="premio"><span class="premio-ico">💿</span><div class="premio-n">Disco d'Oro</div><div class="premio-d">Rachelle Ann Go — Filippine</div></div>
+    <div class="premio"><span class="premio-ico">💿</span><div class="premio-n">Disco di Platino</div><div class="premio-d">Saranno Famosi · Amici — Sugar Music / Universal</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ SELMAH ══════════════════════════ -->
+<section id="selmah">
+  <div class="container">
+
+    <!-- INTESTAZIONE -->
+    <!-- TITOLO BRAZIL -->
+    <div style="border-bottom:1px solid var(--line);padding-bottom:1.5rem;margin-bottom:0">
+      <div class="selmah-big">Brazil</div>
+    </div>
+
+    <!-- BANNER 4 FOTO -->
+    <div style="position:relative;overflow:hidden;height:280px;margin-bottom:3rem">
+      <div style="display:flex;gap:2px;height:100%;width:100%">
+        <div style="flex:1;overflow:hidden;position:relative">
+          <img src="image-009.jpg" alt="Con Toquinho" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.85">
+          <p style="position:absolute;bottom:.6rem;left:0;right:0;text-align:center;font-size:.6rem;letter-spacing:.12em;color:var(--cream);opacity:.8;font-family:'Cormorant Garamond',serif;font-style:italic">Toquinho</p>
+        </div>
+        <div style="flex:.85;overflow:hidden;position:relative">
+          <img src="image-010.jpg" alt="Con Toquinho e Selmah" style="width:100%;height:100%;object-fit:cover;object-position:right center;display:block;opacity:.85">
+          <div style="position:absolute;bottom:0;left:0;right:0;height:8%;background:linear-gradient(to top,rgba(24,13,4,1),transparent)"></div>
+          <p style="position:absolute;bottom:.6rem;left:0;right:0;text-align:center;font-size:.6rem;letter-spacing:.12em;color:var(--cream);opacity:.8;font-family:'Cormorant Garamond',serif;font-style:italic">Toquinho</p>
+        </div>
+        <div style="flex:1.3;overflow:hidden;position:relative">
+          <img src="image-011.jpeg" alt="Con Toninho Horta" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:.85">
+          <div style="position:absolute;bottom:0;left:0;right:0;height:8%;background:linear-gradient(to top,rgba(24,13,4,1),transparent)"></div>
+          <p style="position:absolute;bottom:.6rem;left:0;right:0;text-align:center;font-size:.6rem;letter-spacing:.12em;color:var(--cream);opacity:.8;font-family:'Cormorant Garamond',serif;font-style:italic">Selmah e Toninho Horta</p>
+        </div>
+        <div style="flex:.7;overflow:hidden;position:relative">
+          <img src="image-012.jpg" alt="Con Maestro Rodrigo Toffolo" style="width:100%;height:100%;object-fit:cover;object-position:right center;display:block;opacity:.85">
+          <p style="position:absolute;bottom:.6rem;left:0;right:0;text-align:center;font-size:.6rem;letter-spacing:.12em;color:var(--cream);opacity:.8;font-family:'Cormorant Garamond',serif;font-style:italic">M.tro R. Toffolo</p>
+        </div>
+      </div>
+      <div style="position:absolute;top:0;left:0;bottom:0;width:10%;background:linear-gradient(to right,rgba(24,13,4,1),transparent)"></div>
+      <div style="position:absolute;top:0;right:0;bottom:0;width:5%;background:linear-gradient(to left,rgba(24,13,4,1),transparent)"></div>
+    </div>
+
+    <!-- RUOLO DI LUIGI RANA -->
+    <div style="background:rgba(196,136,58,.08);border-left:2px solid var(--gold);padding:1.5rem 2rem;margin-bottom:2rem">
+      <p style="font-size:.9rem;color:var(--cream);line-height:1.75;font-weight:400">Luigi Rana — Direttore musicale e artistico del Tour <em style="color:var(--gold)">"Toquinho &amp; Selma Hernandes"</em>, celebrando i 50 anni di carriera del grande cantautore brasiliano (2017), del concerto <em style="color:var(--gold)">"Selma Hernandes &amp; Orquestra Ouro Preto"</em> - Teatro Sesc Palladium, Belo Horizonte, Brasile, con la partecipazione del Maestro Nino Lepore, del tour <em style="color:var(--gold)">"Caminho das Águas"</em> con la partecipazione del contrabbassista Giuseppe Bassi, della partecipazione di Selma al World Wide Tour come special guest di Toninho Horta, nonché del nuovo tour <em style="color:var(--gold)">"Samba Rosa"</em> Italia/Brasile, con lo special guest Giuseppe Milici.</p>
+    </div>
+
+    <!-- DUE BOX AFFIANCATI -->
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;color:var(--gold);margin-bottom:1.5rem">Selmah — Una collaborazione lunga 15 anni</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px">
+
+      <!-- BOX SINISTRA: STUDIO -->
+      <div style="background:var(--warm);padding:2.5rem">
+        <p class="selmah-col-title">Produzione discografica</p>
+
+        <!-- Sou da Paz -->
+        <div style="padding-bottom:1.2rem;margin-bottom:1.2rem;border-bottom:1px solid rgba(196,136,58,.15)">
+          <p style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem">Album pubblicato · Saifam Group</p>
+          <p style="font-size:.95rem;color:var(--cream);font-family:'Cormorant Garamond',serif;font-style:italic">"Sou da Paz"</p>
+          <p style="font-size:.76rem;color:var(--muted);margin-top:.3rem">Registrato al Mosh Studio, San Paolo - Brasile</p>
+        </div>
+
+        <!-- 12 Singoli -->
+        <div style="padding-bottom:1.2rem;margin-bottom:1.2rem;border-bottom:1px solid rgba(196,136,58,.15)">
+          <p style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem">Singoli</p>
+          <p style="font-size:.86rem;color:var(--cream)">12 singoli pubblicati</p>
+          <p style="font-size:.76rem;color:var(--muted);margin-top:.3rem">Produzione e arrangiamento · Label: <strong style="color:var(--cream)">Sony Music · Just Entertainment · Universo S.p.A.</strong> e altre</p>
+        </div>
+
+        <!-- Caminho das Águas -->
+        <div style="padding-bottom:1.2rem;margin-bottom:1.2rem;border-bottom:1px solid rgba(196,136,58,.15)">
+          <p style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);margin-bottom:.3rem">Work in progress - 2026</p>
+          <p style="font-size:.95rem;color:var(--cream);font-family:'Cormorant Garamond',serif;font-style:italic">"Caminho das Águas"</p>
+          <p style="font-size:.76rem;color:var(--muted);margin-top:.3rem">Nuovo album · produzione, arrangiamento e direzione artistica di Luigi Rana · Con la partecipazione di: Giuseppe Bassi — contrabbasso (Italia) · Sarah Akioshi — flauto (Giappone) · Scerù Wu — contrabbasso (Taiwan) · Vana Guierig — pianoforte (USA) · Gabriel Prado — percussioni (Brasile)</p>
+        </div>
+
+        <!-- Samba Rosa Live -->
+        <div>
+          <p style="font-size:.95rem;color:var(--cream);font-family:'Cormorant Garamond',serif;font-style:italic">"Samba Rosa"</p>
+          <p style="font-size:.76rem;color:var(--muted);margin-top:.3rem">Album live in corso di registrazione durante il tour Samba Rosa - Italia/Brasile - 2026, con la partecipazione speciale dell'armonicista Giuseppe Milici e il Trio Unisono - Paolo Luiso (piano), Filippo De Salvo (basso e contrabbasso) e Saverio Petruzzelis (batteria).</p>
+        </div>
+      </div>
+
+      <!-- BOX DESTRA: FOTO -->
+      <div style="background:#231e18;padding:0;overflow:hidden;position:relative">
+        <img src="image-013.jpg" alt="Con Selmah" style="width:100%;height:100%;object-fit:cover;object-position:center bottom;display:block">
+        <div style="position:absolute;top:0;left:0;right:0;height:20%;background:linear-gradient(to bottom,#231e18,transparent)"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:.4rem .6rem;background:linear-gradient(to top,rgba(0,0,0,.75),transparent);font-size:.65rem;letter-spacing:.1em;color:rgba(240,235,224,.85);text-transform:uppercase">Selmah e L. Rana — 2024</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ PARTNERS ══════════════════════════ -->
+<section id="partners">
+  <div class="container">
+    <p class="tag">Rete professionale</p>
+    <h2 class="display" style="font-size:clamp(2.5rem,5vw,4rem);margin-top:.5rem;margin-bottom:3rem">Partner artistici <span class="serif" style="font-style:italic;color:var(--gold)">nel corso degli anni</span></h2>
+    <div class="partner-grid">
+      <div class="partner-card" style="padding-bottom:1.5rem">
+        <span class="partner-icon">🎚️</span>
+        <div class="partner-name">Vanni Giorgilli · Subside Records</div>
+        <p class="partner-body">Partnership creativa di lunga durata con <strong>Vanni Giorgilli</strong> — produttore, compositore e fondatore di Subside Records. Decine di produzioni condivise nel corso degli anni, tra cui Batte Forte, Stile, Good Love, Together e molti altri.</p>
+        <div style="margin:1rem 0;overflow:hidden;position:relative">
+          <img src="image-014.jpg" alt="V. G., Coolio, Rana" style="width:100%;display:block">
+          <div style="position:absolute;top:0;left:0;right:0;height:25%;background:linear-gradient(to bottom,var(--warm),transparent)"></div>
+        </div>
+        <p style="font-size:.7rem;color:var(--muted);text-align:center;font-style:italic;letter-spacing:.08em">V. G., Coolio, Rana</p>
+        <span class="partner-tag">Subside Records · Fiuggi · Italia</span>
+      </div>
+      <div class="partner-card" style="padding-bottom:1.5rem">
+        <span class="partner-icon">🎹</span>
+        <div class="partner-name">Tony Renis · Los Angeles</div>
+        <p class="partner-body">Collaborazione artistica con il leggendario <strong>Tony Renis</strong> — compositore, cantante e produttore di fama mondiale. Produzioni per <strong>Trini Lopez</strong> ("Canción Azul") e <strong>Corona</strong> ("Good Love") — etichetta PanaRecord, Los Angeles.</p>
+        <div style="margin:1rem 0;overflow:hidden;position:relative">
+          <img src="image-015.jpg" alt="Con Tony Renis" style="width:100%;display:block">
+          <div style="position:absolute;top:0;left:0;right:0;height:25%;background:linear-gradient(to bottom,var(--warm),transparent)"></div>
+        </div>
+        <span class="partner-tag">PanaRecord · Los Angeles · USA</span>
+      </div>
+      <div class="partner-card" style="padding-bottom:1.5rem">
+        <span class="partner-icon">🎧</span>
+        <div class="partner-name">DJ &amp; Dance — Mr. Frog</div>
+        <p class="partner-body">In ambito Dance, House ed Elettronica <strong>Luigi Rana è Mr. Frog</strong>. Produzioni congiunte lungo la carriera con <strong>Vanni G, DJ Molella, DJ Provenzano, Jean Moiré, Dual Beat, Zeeo, Giuseppe Milano (Luiran)</strong>.</p>
+        <div style="margin:1rem 0;overflow:hidden;position:relative">
+          <img src="image-016.jpg" alt="Mr. Frog" style="width:100%;display:block">
+          <div style="position:absolute;top:0;left:0;right:0;height:25%;background:linear-gradient(to bottom,var(--warm),transparent)"></div>
+        </div>
+        <span class="partner-tag">Dance · Electronic · House · Latin</span>
+      </div>
+    </div>
+
+    <!-- Direttori d'Orchestra -->
+    <div style="margin-top:1.5rem;background:var(--warm);padding:2.5rem;border-top:2px solid var(--gold)">
+      <p class="tag" style="margin-bottom:1.2rem">Collaborazioni con Direttori d'Orchestra</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem">
+        <div style="border-left:1px solid var(--line);padding-left:1rem"><p style="font-size:.88rem;color:var(--cream);font-weight:500">Leonardo De Amicis</p><p style="font-size:.75rem;color:var(--muted)">Orchestra del Festival di Sanremo</p></div>
+        <div style="border-left:1px solid var(--line);padding-left:1rem"><p style="font-size:.88rem;color:var(--cream);font-weight:500">Bruno Santori</p><p style="font-size:.75rem;color:var(--muted)">Orchestra del Festival di Sanremo</p></div>
+        <div style="border-left:1px solid var(--line);padding-left:1rem"><p style="font-size:.88rem;color:var(--cream);font-weight:500">Rodrigo Toffolo</p><p style="font-size:.75rem;color:var(--muted)">Concerto Selmah &amp; Orquestra Ouro Preto · Belo Horizonte, Brasile</p></div>
+        <div style="border-left:1px solid var(--line);padding-left:1rem"><p style="font-size:.88rem;color:var(--cream);font-weight:500">Nino Lepore</p><p style="font-size:.75rem;color:var(--muted)">Concerto Selmah &amp; Orchestra Ouro Preto · Belo Horizonte, Brasile</p></div>
+        <div style="border-left:1px solid var(--line);padding-left:1rem"><p style="font-size:.88rem;color:var(--cream);font-weight:500">M. Morra</p><p style="font-size:.75rem;color:var(--muted)">Concerto per la Pace · Toquinho e Selma Hernandes con l'Orchestra Metropolitana di Bari · Foggia, Italia</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="margin:0;line-height:0;height:320px;display:flex;gap:2px">
+  <div style="flex:1;overflow:hidden;position:relative">
+    <img src="image-017.jpg" alt="In studio" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.85">
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:.4rem .6rem;background:linear-gradient(to top,rgba(0,0,0,.75),transparent);font-size:.65rem;letter-spacing:.08em;color:rgba(240,235,224,.85);line-height:1.3;text-transform:uppercase">Londra — James Lewis<br><span style="color:var(--gold);font-size:.6rem">Arctic Monkeys</span></div>
+  </div>
+  <div style="flex:1;overflow:hidden;position:relative">
+    <img src="image-018.png" alt="In studio" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.85">
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:.4rem .6rem;background:linear-gradient(to top,rgba(0,0,0,.75),transparent);font-size:.65rem;letter-spacing:.08em;color:rgba(240,235,224,.85);line-height:1.3;text-transform:uppercase">São Paulo — Brazil<br><span style="color:var(--gold);font-size:.6rem">Mosh Studio</span></div>
+  </div>
+  <div style="flex:1;overflow:hidden;position:relative">
+    <img src="image-019.jpg" alt="Radio Capital" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.85">
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:.4rem .6rem;background:linear-gradient(to top,rgba(0,0,0,.75),transparent);font-size:.65rem;letter-spacing:.08em;color:rgba(240,235,224,.85);line-height:1.3;text-transform:uppercase">Milano — Radio Capital<br><span style="color:var(--gold);font-size:.6rem">G. Milano</span></div>
+  </div>
+  <div style="flex:1;overflow:hidden;position:relative">
+    <img src="image-020.jpg" alt="In studio" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.85">
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:.4rem .6rem;background:linear-gradient(to top,rgba(0,0,0,.75),transparent);font-size:.65rem;letter-spacing:.08em;color:rgba(240,235,224,.85);line-height:1.3;text-transform:uppercase">São Paulo — Brazil</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ STUDIOS ══════════════════════════ -->
+<section id="studios">
+  <div class="container">
+    <p class="tag">Dove nasce la musica</p>
+    <h2 class="display" style="font-size:clamp(2.5rem,5vw,4rem);margin-top:.5rem;margin-bottom:.5rem">Studi di <span class="serif" style="font-style:italic;color:var(--gold)">registrazione</span></h2>
+    <p style="font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(240,235,224,.3);margin-bottom:3rem">Utilizzati nel corso degli anni</p>
+    <div class="studios-list">
+      <div class="studio"><div class="studio-name">Lion Share Recording</div><div class="studio-city">Beverly Blvd · Los Angeles</div><div class="studio-note">Studio di Kenny Rogers</div></div>
+      <div class="studio"><div class="studio-name">Mosh Studio</div><div class="studio-city">San Paolo · Brasile</div><div class="studio-note">Il più grande studio dell'America del Sud</div></div>
+      <div class="studio"><div class="studio-name">Studio di Ripetta</div><div class="studio-city">Roma · Italia</div><div class="studio-note">Studio di Pino Daniele</div></div>
+      <div class="studio"><div class="studio-name">Studio Forum</div><div class="studio-city">Italia</div><div class="studio-note">Produzioni discografiche</div></div>
+      <div class="studio"><div class="studio-name">Massive Arts Studios</div><div class="studio-city">Milano · Italia</div><div class="studio-note">Produzioni discografiche</div></div>
+      <div class="studio"><div class="studio-name">Fonoprint</div><div class="studio-city">Bologna · Italia</div><div class="studio-note">Storico studio italiano</div></div>
+      <div class="studio"><div class="studio-name">Entropya Studio</div><div class="studio-city">Perugia · Italia</div><div class="studio-note">Produzioni e missaggi</div></div>
+      <div class="studio"><div class="studio-name">Subside Records Studio</div><div class="studio-city">Fiuggi · Italia</div><div class="studio-note">con Vanni Giorgilli</div></div>
+      <div class="studio"><div class="studio-name">Frog Studio</div><div class="studio-city">Bari · Fiuggi · Italia</div><div class="studio-note">Studio personale</div></div>
+      <div class="studio"><div class="studio-name">MastStudio</div><div class="studio-city">Italia</div><div class="studio-note">di Massimo Stano</div></div>
+    </div>
+    <div style="display:flex;gap:2px;height:280px;margin-top:1.5rem;overflow:hidden">
+      <div style="flex:1;overflow:hidden">
+        <img src="image-021.JPG" alt="Luigi Rana live" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.85">
+      </div>
+      <div style="flex:1;overflow:hidden">
+        <img src="image-022.jpg" alt="Luigi Rana jazz" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.85">
+      </div>
+      <div style="flex:1;overflow:hidden">
+        <img src="image-023.jpg" alt="Luigi Rana chitarra" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.85">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ LABELS ═══════════════════════════ -->
+<section id="labels">
+  <div class="container">
+    <h2 class="display" style="font-size:clamp(2.5rem,5vw,4rem);margin-bottom:3rem">Case discografiche <span class="serif" style="font-style:italic;color:var(--gold);font-size:.7em">con cui ha collaborato durante la carriera</span></h2>
+    <div class="labels-grid">
+      <div class="lbl"><div class="lbl-name">Universal Music</div><div class="lbl-note">Italia &amp; International</div></div>
+      <div class="lbl"><div class="lbl-name">Warner Music</div><div class="lbl-note">Italia</div></div>
+      <div class="lbl"><div class="lbl-name">Sony BMG</div><div class="lbl-note">Italia</div></div>
+      <div class="lbl"><div class="lbl-name">Saifam Group</div><div class="lbl-note">Collaborazione attiva</div></div>
+      <div class="lbl"><div class="lbl-name">Sugar Music</div><div class="lbl-note">Italia</div></div>
+      <div class="lbl"><div class="lbl-name">Viva Records</div><div class="lbl-note">Filippine · Asia</div></div>
+      <div class="lbl"><div class="lbl-name">Muxxic</div><div class="lbl-note">Spagna</div></div>
+      <div class="lbl"><div class="lbl-name">PanaRecord</div><div class="lbl-note">con Tony Renis</div></div>
+      <div class="lbl"><div class="lbl-name">Universo S.p.A.</div><div class="lbl-note">con Giancarlo Meo</div></div>
+      <div class="lbl"><div class="lbl-name">Subside Records</div><div class="lbl-note">con Vanni Giorgilli</div></div>
+      <div class="lbl"><div class="lbl-name">Cafè Concerto</div><div class="lbl-note">Post-Sanremo 2004</div></div>
+      <div class="lbl"><div class="lbl-name">Do It Yourself</div><div class="lbl-note">Produzioni indipendenti</div></div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:3rem;margin-top:3rem;align-items:flex-end">
+      <div style="flex:0 0 auto;text-align:center">
+        <img src="image-024.jpg" alt="Luigi Rana" style="height:360px;width:auto;display:block">
+      </div>
+      <div style="flex:0 0 auto;text-align:center">
+        <img src="image-025.jpg" alt="Luigi Rana radio" style="height:360px;width:auto;display:block">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ GLI INIZI ════════════════════════ -->
+<section id="inizi">
+  <div class="container">
+    <div>
+      <div style="margin-bottom:3rem">
+        <p class="tag">Le origini</p>
+        <h2 class="display" style="font-size:clamp(2.5rem,5vw,4rem);margin-top:.5rem;margin-bottom:2rem">Gli <span class="serif" style="font-style:italic;color:var(--gold)">inizi</span></h2>
+        <div class="inizi-text" style="max-width:800px">
+          <p>All'età di 13 anni forma una band di nome <strong>"Little Stars"</strong>. Come chitarrista fa il primo tour in Canada, dove incide il suo primo disco <strong>"45 giri"</strong> prodotto dalla <strong>RCA</strong>.</p>
+          <p>A 18 anni inizia a lavorare come chitarrista turnista con vari artisti di fama nazionale, tra cui <strong>Zucchero, Anna Oxa, Franco Califano</strong> e molti altri.</p>
+          <p>A 21 anni si trasferisce a Milano ed inizia il tour con la cantante rock inglese <strong>Miranda Johns</strong>, avviando il percorso che lo porterà verso la produzione e l'arrangiamento.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:2px;height:400px;overflow:hidden">
+        <div style="flex:1;overflow:hidden;position:relative">
+          <img src="image-026.jpg" alt="Gli inizi" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;display:block;opacity:.85">
+          <div style="position:absolute;top:0;left:0;right:0;height:7%;background:linear-gradient(to bottom,var(--dark),transparent)"></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;height:15%;background:linear-gradient(to top,var(--dark),transparent)"></div>
+        </div>
+        <div style="flex:1;overflow:hidden;position:relative">
+          <img src="image-027.png" alt="Gli inizi" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;opacity:.85">
+          <div style="position:absolute;top:0;left:0;right:0;height:7%;background:linear-gradient(to bottom,var(--dark),transparent)"></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;height:15%;background:linear-gradient(to top,var(--dark),transparent)"></div>
+        </div>
+        <div style="flex:1;overflow:hidden;position:relative">
+          <img src="image-028.jpg" alt="Gli inizi" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;opacity:.85">
+          <div style="position:absolute;top:0;left:0;right:0;height:7%;background:linear-gradient(to bottom,var(--dark),transparent)"></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;height:15%;background:linear-gradient(to top,var(--dark),transparent)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ BIO CONTINUATION ══════════════════════════════ -->
+<section id="bio" style="background:var(--dark)">
+  <div class="container">
+    <div class="bio-inner">
+      <div class="bio-text">
+        <p>Nel <strong>1981</strong> apre il suo primo studio a <strong>Modugno (BA)</strong>, avviando fin da subito un percorso che unisce la ricerca del suono alla visione artistica. Nel <strong>1993</strong> nasce la collaborazione con i fratelli Bernardi a Bari, nello studio <strong>Crescendo</strong>. Nel <strong>2000</strong> inaugura il <strong>Frog Studio</strong> a Bari e avvia una lunga e proficua collaborazione con <strong>Vanni Giorgilli</strong> di Subside Records a Fiuggi. Da quel momento in poi lavora in molti studi in tutta Italia, sempre alla ricerca del suono perfetto per ogni progetto.</p>
+        <p>Negli anni Duemila si afferma come produttore e autore. Nel 2002 firma <strong>"Batte Forte"</strong> delle Lollipop — oggi a <strong>3,3 miliardi di streaming</strong> su TikTok Asia — e la colonna sonora Disney de <strong>"Il Libro della Giungla 2"</strong>. Nel 2004 conquista il secondo posto a Sanremo con <strong>"Sei la vita mia"</strong> di Mario Rosini, vincendo Premio Volare, Premio Mia Martini e Palma d'Oro. Nello stesso anno il singolo <strong>"Stile"</strong> di Lucky Star — da lui prodotto — segna il debutto assoluto di <strong>Emma Marrone</strong>.</p>
+        <p>Nel 2005–07 raggiunge il mercato internazionale con <strong>Marta Sánchez</strong> (multiplatino in Spagna), <strong>Sarah Geronimo</strong> (Disco di Platino nelle Filippine) e <strong>Rachelle Ann Go</strong> (Disco d'Oro, Myx Music Award). A Los Angeles collabora con i musicisti <strong>Vinnie Colaiuta, Abraham Laboriel, Randy Waldman, Tim Pierce</strong> e <strong>James Harrah</strong>.</p>
+        <p>Dal 2007 produce tutti i progetti della cantautrice brasiliana <strong>Selmah (Selma Hernandes)</strong>: 12 singoli, l'album <strong>"Sou da Paz"</strong> (Saifam Group, 2016, registrato al Mosh Studio di San Paolo), i tour con <strong>Toquinho</strong> e con l'<strong>Orquestra Ouro Preto</strong> a Belo Horizonte. Attualmente dirige il progetto <strong>"Samba Rosa"</strong> — in tour nel 2026 in Italia e Brasile — e finalizza l'album <strong>"Caminho das Águas"</strong> con musicisti da 5 Paesi.</p>
+        <p>In ambito Dance ed Elettronica opera come <strong>Mr. Frog</strong>, con collaborazioni con Vanni G, DJ Molella, Jean Moiré, Dual Beat, Zeeo e altri.</p>
+        <p style="color:rgba(240,235,224,.3);font-size:.78rem;margin-top:2rem">Puglia, Italia — Giugno 2026</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOTO 029 -->
+<div style="display:flex;flex-direction:column;align-items:center;padding:3rem 0;background:var(--dark)">
+  <img src="image-029.jpg" alt="Luigi Rana" style="max-width:500px;width:100%;display:block">
+  <p style="margin-top:.8rem;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,235,224,.6)">Masini, Rana e Rosini</p>
+</div>
+
+<!-- ══════════════════════════ DISCO ════════════════════════════ -->
+<section id="disco" style="background:var(--dark)">
+  <div class="container">
+    <p class="tag">Opere selezionate fra più di 700 brani</p>
+    <h2 class="display" style="font-size:clamp(2.5rem,5vw,4rem);margin-top:.5rem;margin-bottom:3rem">Discografia</h2>
+
+    <div class="disco-era">
+      <div class="era-label">2020 — 2026</div>
+      <ul class="disco-row">
+        <li><span class="yr">2026</span>Samba Rosa Tour — Direttore Musicale · Selmah ft. Giuseppe Milici · Trio Unisono</li>
+        <li><span class="yr">2024</span>Caminho das Águas — In produzione · Selmah (Selma Hernandes)</li>
+        <li><span class="yr">2023</span>Candela — Dual Beat &amp; Mr. Frog ft. Selma Hernandes</li>
+        <li><span class="yr">2022</span>Magica Oshun (Tamborder Remix) — Zeeo &amp; Mr. Frog ft. Selma Hernandes</li>
+        <li><span class="yr">2022</span>Remedios — Selma Hernandes — Re-release/Remix</li>
+        <li><span class="yr">2021</span>Quadri — MiKra — EP</li>
+        <li><span class="yr">—</span>Feel So Right — Mr. Frog &amp; Zeeo — Cut Rec</li>
+        <li><span class="yr">2020</span>Anymore — Zeeo &amp; Mr. Frog ft. Manuel Deep — Metropolitan Recordings</li>
+        <li><span class="yr">2020</span>Lackland · 15' (Il Sogno) — MiKra</li>
+      </ul>
+    </div>
+    <div class="disco-era">
+      <div class="era-label">2015 — 2019</div>
+      <ul class="disco-row">
+        <li><span class="yr">2019</span>Nuvole Di Sabbia — MiKra</li>
+        <li><span class="yr">2018</span>Shakera Nena — Selmah</li>
+        <li><span class="yr">2017</span>Tour Toquinho &amp; Selmah (Italia) · Concerto Selmah &amp; Orquestra Ouro Preto — Belo Horizonte</li>
+        <li><span class="yr">2017</span>Noite De Lua — Selmah</li>
+        <li><span class="yr">2016</span>Sou Da Paz — Selmah — Album — The Saifam Group</li>
+        <li><span class="yr">2016</span>RiOlympic — Selmah</li>
+        <li><span class="yr">2015</span>Chic and Kitsch · Un Bacio Davvero (Tosi) · Everything A Man (Mr. Frog)</li>
+      </ul>
+    </div>
+    <div class="disco-era">
+      <div class="era-label">2009 — 2014</div>
+      <ul class="disco-row">
+        <li><span class="yr">2014</span>She Walks In Beauty / Keep The Time — Mr. Frog · Heavy Session — Jean Moiré ft. Pheel</li>
+        <li><span class="yr">2013</span>Con Te Io Volo — Paky Maione</li>
+        <li><span class="yr">2012</span>Clap Clap — Cash Keefo ft. Selmah · A Te Mais — Selmah</li>
+        <li><span class="yr">2011</span>Canta Sin Parar — Selmah · Ritmo — Terry Attoma (Album)</li>
+        <li><span class="yr">2010</span>Musica pra Dançar — Selmah (Sony Music)</li>
+        <li><span class="yr">2009</span>Num Segundo — Selmah (Universo S.p.A.)</li>
+      </ul>
+    </div>
+    <div class="disco-era">
+      <div class="era-label">2000 — 2008</div>
+      <ul class="disco-row">
+        <li><span class="yr">2008</span>Paula Mitrache — Haiducci · Bari Grande Amore — Inno AS Bari Serie A</li>
+        <li><span class="yr">2008</span>Lucie Bílá — "Lucerna" Live · EMI/Monitor · Repubblica Ceca</li>
+        <li><span class="yr">2007</span>Obsession — Rachelle Ann Go · La Noche Que Acabó — Marta Sánchez</li>
+        <li><span class="yr">2006</span>Becoming — Sarah Geronimo · Disco di Platino · "I Still Believe in Love" — Viva Records</li>
+        <li><span class="yr">2005</span>Soy Yo / Miss Sánchez — Marta Sánchez (multiplatino) · Cercando Te — Mario Rosini</li>
+        <li><span class="yr">2004</span>Sei la vita mia — Mario Rosini · Sanremo 2° posto · Premio Volare</li>
+        <li><span class="yr">2003</span>America — GAF — Singolo · Italodance / Electronic</li>
+        <li><span class="yr">2003</span>Stile — Lucky Star ft. Emma Marrone · Amici — I Ragazzi del 2003 (Sugar)</li>
+        <li><span class="yr">2003</span>Credi a Me — Lollipop · Walt Disney Records · Lucie Bílá — "Jampadampa"</li>
+        <li><span class="yr">2002</span>Batte Forte — Lollipop · Sanremo · Together · Saranno Famosi (Sugar)</li>
+        <li><span class="yr">2001</span>Canción Azul — Trini Lopez con Tony Renis · Cha Cha Fever — Cecilia Gayle</li>
+        <li><span class="yr">2000</span>Good Love — Corona · Te Quiero — Cecilia Gayle</li>
+      </ul>
+    </div>
+    <div class="disco-era">
+      <div class="era-label">1987 — 1999</div>
+      <ul class="disco-row">
+        <li><span class="yr">1994</span>Lelio D'Aprile — "La Grande Forza Di Vivere" · "I Wanna Live My Life"</li>
+        <li><span class="yr">1988</span>Tony — "Into Emotion / Nothing Can Be The Same" — Andros Music</li>
+        <li><span class="yr">1987</span>Tabasco — "Memory / Misterious Road" — Andros Music</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ CONTATTI (fine pagina) ══════════════════ -->
+<section id="contatti-bottom" style="background:var(--ink);padding:5rem 0;text-align:center">
+  <div class="container">
+    <p class="tag">Contatti &amp; Social</p>
+    <h2 class="display" style="font-size:clamp(2rem,4vw,3rem);margin-top:.5rem">Resta in <span class="serif" style="font-style:italic;color:var(--gold)">contatto</span></h2>
+    <p style="font-size:.82rem;color:rgba(240,235,224,.35);margin-top:.5rem">Per collaborazioni, produzioni e management</p>
+    <div class="contact-btns">
+      <a href="https://www.instagram.com/luigirana_mrfrog" target="_blank" rel="noopener" class="cbtn">📸 Instagram</a>
+      <a href="https://www.facebook.com/LuigiRanaMrFrog" target="_blank" rel="noopener" class="cbtn">👤 Facebook</a>
+      <a href="https://www.discogs.com/it/artist/248575-Luigi-Rana" target="_blank" rel="noopener" class="cbtn">💿 Discogs</a>
+      <a href="https://genius.com/artists/Luigi-rana/songs" target="_blank" rel="noopener" class="cbtn">🎵 Genius</a>
+      <a href="https://www.youtube.com/playlist?list=PLOU3EmnjuJ87JLNkuH7TPJl9sI-Yb7RH5" target="_blank" rel="noopener" class="cbtn">▶️ YouTube</a>
+      <a href="#" class="cbtn">🎵 Spotify</a>
+      <a href="mailto:luigirana@gmail.com" class="cbtn">✉️ Management</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Luigi Rana</strong> &nbsp;·&nbsp; Produttore · Arrangiatore · Chitarrista · Compositore<br>
+  <span style="display:block;margin-top:.4rem">Modugno, Puglia, Italia &nbsp;·&nbsp; © 2026 — Tutti i diritti riservati</span>
+</footer>
+
+</body>
+</html>
